@@ -4,16 +4,9 @@
 module.exports = {
   async up (queryInterface, Sequelize) {   
      await queryInterface.createTable('users', { 
-      id: {
-				type: Sequelize.UUID,
-				allowNull: false,
-				primaryKey: true,
-        defaultValue: Sequelize.UUIDV4				
-			},   
-      
       name: {
         type: Sequelize.STRING,
-        allowNul: false
+        allowNull: false  // ✅ CORRIGIDO: era "allowNul"
       },
       email: {
         type: Sequelize.STRING,
@@ -26,16 +19,10 @@ module.exports = {
       },
       admin: {
         type: Sequelize.BOOLEAN,
-        defaultValue: false
-      },
-      created_at: {
-				type: Sequelize.DATE(),
-				allowNull: false,
-			},
-			update_at: {
-				type: Sequelize.DATE(),
-				allowNull: false,
-			},
+        defaultValue: false,
+        allowNull: false
+      }
+
    
     });     
   },
