@@ -11,9 +11,7 @@ class Product extends Model {
 			},
 			{
 				sequelize,
-				tableName: 'products',
-				timestamps: true, // ✅ MUDOU AQUI
-				underscored: true,
+				tableName: 'products',		
 			},
 		);
 	}
