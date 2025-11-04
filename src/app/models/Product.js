@@ -6,20 +6,29 @@ class Product extends Model {
 			{
 				name: Sequelize.STRING,
 				price: Sequelize.INTEGER,
-				category: Sequelize.STRING,
 				path: Sequelize.STRING,
+				offer: Sequelize.BOOLEAN,
 				url: {
 					type: Sequelize.VIRTUAL,
-					get(){
-						return`http://localhost:3001/product-file/${this.path}`
-					}
-				}
+					get() {
+						return `http://localhost:3001/product-file/${this.path}`;
+					},
+				},
 			},
 			{
 				sequelize,
-				tableName: 'products',		
+				tableName: 'products',
 			},
 		);
+
+
+	}
+
+	static associate(models) {
+		this.belongsTo(models.Category, {
+			foreignKey: 'category_id',
+			as: 'category',
+		});
 	}
 }
 
